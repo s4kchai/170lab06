@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:lab06/loginpage.dart';
+import 'package:lab06/services/auth_service.dart';
 
 
 
@@ -51,9 +53,20 @@ class _LoginpageState extends State<Registerpage> {
            
         
             ElevatedButton(onPressed: () { 
+           
                   if (_formkey.currentState!.validate()) {
                     print("ok");
+                    AuthService.registerUser(_emailController.text, _passwordController.text).then((value){
+                      if(value==1){
+                        Navigator.pop(context);
+                      
+                      }
+
+                    });
+    
                   }
+
+            
                 }, child: Text("Register")),
           ],
         ),
